@@ -1,0 +1,4 @@
+#Thu Sep 29 11:21:04 BRT 2022
+base.0=/media/gloomage/Dev/Meu/Programação/Projetos/cantina/cantina_app/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
+renamed.0=classes.dex
+path.0=classes.dex
