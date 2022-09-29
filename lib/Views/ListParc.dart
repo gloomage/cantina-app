@@ -5,14 +5,14 @@ import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
 import 'package:cantina_app/Models/ParcModel.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class ListParc extends StatefulWidget {
+  const ListParc({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<ListParc> createState() => _ListParcState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _ListParcState extends State<ListParc> {
 
   late Future<List<ParcModel>> parceiros;
 
@@ -42,6 +42,7 @@ class _HomePageState extends State<HomePage> {
                   ParcModel parcModel = snapshot.data![index];
                   return ListTile(
                     title: Text(parcModel.nomparc!),
+                    subtitle: Text("exemplo@gmail.com")
                   );
                 });
 
@@ -56,7 +57,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<List<ParcModel>> pegarParceiros() async {
-    var url = Uri.parse("http://172.18.0.1:8080/parceiros"); //corrigir endereço para o ipv4 da maquina host
+    var url = Uri.parse("http://192.168.1.141:8080/parceiros"); //ip do wlp2s0 == ip do pc na lan
     var response = await http.get(url);
 
     if(response.statusCode == 200){

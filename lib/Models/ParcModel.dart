@@ -1,15 +1,15 @@
 class ParcModel {
   String? id;
   String? nomparc;
-  Null? emlparc;
-  Null? cepparc;
-  Null? casparc;
-  Null? telparc;
-  Null? sttparc;
-  Null? cpfparc;
-  Null? cnpparc;
-  Null? vlcparc;
-  Null? vldparc;
+  String? emlparc;
+  String? cepparc;
+  String? casparc;
+  String? telparc;
+  String? sttparc;
+  String? cpfparc;
+  String? cnpparc;
+  double? vlcparc;
+  double? vldparc;
 
   ParcModel(
       {this.id,
