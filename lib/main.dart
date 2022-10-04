@@ -1,10 +1,10 @@
+import 'package:cantina_app/src/config/custom_colors.dart';
+import 'package:cantina_app/src/routes/app_routes.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-
-import 'Views/ListParc.dart';
+import 'package:get/get.dart';
 
 void main(){
-  runApp(const MyApp());
+  
 }
 
 class MyApp extends StatelessWidget {
@@ -12,14 +12,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context){
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: "Parceiros",
+    return GetMaterialApp(
+      title: "Cantina Vendas",
       theme: ThemeData(
-        primarySwatch: Colors.blue
+        primaryColor: CustomColors.customSwatchColor,
+        scaffoldBackgroundColor: Colors.white.withAlpha(200)
       ),
-      home: const ListParc(),
+      debugShowCheckedModeBanner: false,
+      initialRoute: PagesRoutes.baseRoute,
+      getPages: AppPages.pages,
     );
   }
-
 }

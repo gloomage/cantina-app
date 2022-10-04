@@ -36,7 +36,21 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  http: ^0.13.4
+  animated_text_kit: ^4.2.2
+  mask_text_input_formatter: ^2.4.0
+  badges: ^2.0.3
+  intl: ^0.17.0
+  qr_flutter: ^4.0.0
+  add_to_cart_animation: ^0.0.7
+  fluttertoast: ^8.0.9
+  flutter_launcher_icons: ^0.10.0
+  shimmer: ^2.0.0
+  get: ^4.6.5
+  dio: ^4.0.6
+  json_annotation: ^4.7.0
+  freezed: ^2.1.1
+  freezed_annotation: ^2.1.0
+  flutter_secure_storage: ^6.0.0
 
 dev_dependencies:
   flutter_test:
@@ -59,7 +73,13 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
-
+vars:
+    clean: flutter clean
+    get: flutter pub get
+    runner: flutter pub run build_runner
+sqripts:
+    mobx_build: $clean & $get & &runner build --delete-conflicting-outputs 
+    mobx_watch: $clean & $get & &runner watch --delete-conflicting-outputs 
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg
