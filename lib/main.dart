@@ -1,10 +1,9 @@
-import 'package:cantina_app/src/config/custom_colors.dart';
-import 'package:cantina_app/src/routes/app_routes.dart';
+import 'package:cantina_app/src/pages/base/base_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-void main(){
-  
+void main() {
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -15,12 +14,11 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: "Cantina Vendas",
       theme: ThemeData(
-        primaryColor: CustomColors.customSwatchColor,
+        primaryColor: Colors.black,
         scaffoldBackgroundColor: Colors.white.withAlpha(200)
       ),
       debugShowCheckedModeBanner: false,
-      initialRoute: PagesRoutes.baseRoute,
-      getPages: AppPages.pages,
+      home: const BaseScreen(),
     );
   }
 }

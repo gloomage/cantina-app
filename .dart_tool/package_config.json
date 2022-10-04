@@ -236,6 +236,12 @@
       "languageVersion": "2.15"
     },
     {
+      "name": "google_nav_bar",
+      "rootUri": "file:///home/gloomage/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/google_nav_bar-5.0.6",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "http_parser",
       "rootUri": "file:///home/gloomage/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/http_parser-4.0.1",
       "packageUri": "lib/",
@@ -440,7 +446,7 @@
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2022-10-04T02:27:01.898643Z",
+  "generated": "2022-10-04T17:29:07.303027Z",
   "generator": "pub",
   "generatorVersion": "2.18.0"
 }
