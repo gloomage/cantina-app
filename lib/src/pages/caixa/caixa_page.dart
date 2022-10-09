@@ -14,7 +14,10 @@ class _CaixaPage extends State<CaixaPage>{
   Widget build(BuildContext context){
     return Scaffold(
       
-      
+      body: Center(
+        child: Text("Caixa"),
+      ),
+
     );
   }
 }

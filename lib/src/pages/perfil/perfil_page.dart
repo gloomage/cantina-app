@@ -14,6 +14,9 @@ class _PerfilPage extends State<PerfilPage>{
   Widget build(BuildContext context){
     return Scaffold(
       
+      body: Center(
+        child: Text("Perfil"),
+      ),
       
     );
   }

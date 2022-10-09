@@ -32,14 +32,14 @@ class _BaseScreenState extends State<BaseScreen>{
       ),
 
       bottomNavigationBar: Container(
-        color: Colors.black,
+        color: Colors.white,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10),
           child: GNav(
-            backgroundColor: Colors.black,
-            color: Colors.white,
-            activeColor: Colors.white,
-            tabBackgroundColor: Colors.grey.shade800,
+            backgroundColor: Colors.white,
+            color: Colors.purple,
+            activeColor: Colors.purple,
+            tabBackgroundColor: Colors.grey.withOpacity(0.5),
             gap: 8,
             
             onTabChange: (index){

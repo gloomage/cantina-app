@@ -14,7 +14,10 @@ class _VendasPage extends State<VendasPage>{
   Widget build(BuildContext context){
     return Scaffold(
       
-      
+      body: Center(
+        child: Text("Vendas"),
+      ),
+
     );
   }
 }
