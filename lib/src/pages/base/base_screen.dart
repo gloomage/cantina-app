@@ -53,8 +53,8 @@ class _BaseScreenState extends State<BaseScreen>{
             );
               });
             },
-            padding: EdgeInsets.all(16),
-            tabs: [
+            padding: const EdgeInsets.all(16),
+            tabs: const [
               GButton(
                 icon: Icons.add_business,
                 text: 'Vendas',

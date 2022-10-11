@@ -39,6 +39,8 @@ dependencies:
   google_nav_bar: ^5.0.6
   get: ^4.6.5
   json_annotation:
+  http: ^0.13.4
+  dio: 
 
 dev_dependencies:
   flutter_test:

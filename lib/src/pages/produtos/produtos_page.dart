@@ -1,5 +1,10 @@
-import 'package:cantina_app/src/pages/produtos/produtos_form.dart';
+import 'dart:convert';
+
+import 'package:cantina_app/src/models/prod_model.dart';
+import 'package:cantina_app/src/routes/routes_app.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'package:get/get.dart';
 
 class ProdutosPage extends StatefulWidget{
   const ProdutosPage({Key? key}) : super(key: key);
@@ -9,6 +14,14 @@ class ProdutosPage extends StatefulWidget{
 }
 
 class _ProdutosPage extends State<ProdutosPage>{
+
+  late Future<List<ProdModel>> produtos;
+
+  @override
+  void initState(){
+    super.initState();
+    produtos = pegarProdutos();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +38,7 @@ class _ProdutosPage extends State<ProdutosPage>{
 
             //Top
             Container(
-              margin: EdgeInsets.only(top: 20, bottom: 20),
+              margin: EdgeInsets.only(top: 30, bottom: 20),
 
               child: Column(
                 children: <Widget>[
@@ -83,7 +96,7 @@ class _ProdutosPage extends State<ProdutosPage>{
 
                           child: ElevatedButton.icon(
                             onPressed: () {
-                                const ProdutosForm();
+                              Get.toNamed(PagesRoutes.produtosForm);                              
                             },
                             icon: const Icon(Icons.add, size: 18,),
                             label: const Text('Adicionar'),
@@ -140,7 +153,7 @@ class _ProdutosPage extends State<ProdutosPage>{
                               shadowColor: Colors.purpleAccent,
                               elevation: 3,
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8),
+                                borderRadius: BorderRadius.circular(30),
                               ),
                               minimumSize: const Size(150, 40),
                             ),
@@ -153,142 +166,111 @@ class _ProdutosPage extends State<ProdutosPage>{
               )
             ),
 
-            // Tabela
+            
+      
+
+            //Tabela
             Expanded(
               child: Container(
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: <Widget>[
+                width: double.infinity,
+                
+                decoration: BoxDecoration(
+                  color: Colors.purple,
+                  borderRadius: BorderRadius.circular(30),
+                ),
+            
+                child: Column(
+                  children: [
+          
+                    // Head
+                    Container(
+                      margin: const EdgeInsets.only(left: 30, top: 10, bottom: 10),
+                      // color: Colors.red,
+                      width: double.infinity,
+                      child: const Text(
+                        'PRODUTOS',
+                        textAlign: TextAlign.left,
+                        
 
-                      //3ª Linha -> Referente a tabela
-                      Container(
-                        margin: const EdgeInsets.only(top: 10),
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.white,
 
-                        child: SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            children: [
-                              SingleChildScrollView(
-                                child: DataTable(
-                                  columns: const [
-                                    DataColumn(label: Text('Produto')),
-                                    DataColumn(label: Text('Price')),
-                                    DataColumn(label: Text('Quant.')),
-                                    DataColumn(label: Text('Categoria')),
-                                  ],
-                                  rows: const [
-                                    DataRow(cells: [
-                                      DataCell(Text('Pastel')),
-                                      DataCell(Text('4,50')),
-                                      DataCell(Text('14')),
-                                      DataCell(Text('Comida'))
-                                    ]),
-                                    DataRow(cells: [
-                                      DataCell(Text('Refri')),
-                                      DataCell(Text('3,50')),
-                                      DataCell(Text('34')),
-                                      DataCell(Text('Bebida')),
-                                    ]),
-                                    DataRow(cells: [
-                                      DataCell(Text('Sanduiche')),
-                                      DataCell(Text('5,50')),
-                                      DataCell(Text('7')),
-                                      DataCell(Text('Comida')),
-                                    ]),
-                                    DataRow(cells: [
-                                      DataCell(Text('Esfira')),
-                                      DataCell(Text('5,00')),
-                                      DataCell(Text('17')),
-                                      DataCell(Text('Comida')),
-                                    ]),
-                                    DataRow(cells: [
-                                      DataCell(Text('Pão de Queijo')),
-                                      DataCell(Text('0,50')),
-                                      DataCell(Text('45')),
-                                      DataCell(Text('Comida')),
-                                    ]),
-                                    DataRow(cells: [
-                                      DataCell(Text('Suco')),
-                                      DataCell(Text('2,50')),
-                                      DataCell(Text('23')),
-                                      DataCell(Text('Comida')),
-                                    ]),
-                                    DataRow(cells: [
-                                      DataCell(Text('Suco')),
-                                      DataCell(Text('2,50')),
-                                      DataCell(Text('23')),
-                                      DataCell(Text('Comida')),
-                                    ]),
-                                    DataRow(cells: [
-                                      DataCell(Text('Suco')),
-                                      DataCell(Text('2,50')),
-                                      DataCell(Text('23')),
-                                      DataCell(Text('Comida')),
-                                    ]),
-                                    DataRow(cells: [
-                                      DataCell(Text('Suco')),
-                                      DataCell(Text('2,50')),
-                                      DataCell(Text('23')),
-                                      DataCell(Text('Comida')),
-                                    ]),
-                                    DataRow(cells: [
-                                      DataCell(Text('Suco')),
-                                      DataCell(Text('2,50')),
-                                      DataCell(Text('23')),
-                                      DataCell(Text('Comida')),
-                                    ]),
-                                    DataRow(cells: [
-                                      DataCell(Text('Suco')),
-                                      DataCell(Text('2,50')),
-                                      DataCell(Text('23')),
-                                      DataCell(Text('Comida')),
-                                    ]),
-                                    DataRow(cells: [
-                                      DataCell(Text('Suco')),
-                                      DataCell(Text('2,50')),
-                                      DataCell(Text('23')),
-                                      DataCell(Text('Comida')),
-                                    ]),
-                                    DataRow(cells: [
-                                      DataCell(Text('Suco')),
-                                      DataCell(Text('2,50')),
-                                      DataCell(Text('23')),
-                                      DataCell(Text('Comida')),
-                                    ]),
-                                    DataRow(cells: [
-                                      DataCell(Text('Suco')),
-                                      DataCell(Text('2,50')),
-                                      DataCell(Text('23')),
-                                      DataCell(Text('Comida')),
-                                    ]),
-                                    DataRow(cells: [
-                                      DataCell(Text('Suco')),
-                                      DataCell(Text('2,50')),
-                                      DataCell(Text('23')),
-                                      DataCell(Text('Comida')),
-                                    ]),
-                                    DataRow(cells: [
-                                      DataCell(Text('Suco')),
-                                      DataCell(Text('2,50')),
-                                      DataCell(Text('23')),
-                                      DataCell(Text('Comida')),
-                                    ]),
-                                    DataRow(cells: [
-                                      DataCell(Text('Suco')),
-                                      DataCell(Text('2,50')),
-                                      DataCell(Text('23')),
-                                      DataCell(Text('Comida')),
-                                    ]),
-                              
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+            
+                    
+                    //Body
+                    Expanded(
+                      child: SingleChildScrollView(
+                        child: Container(
+                          color: Colors.white,
+                          child: FutureBuilder<List<ProdModel>>(
+                          future: produtos,
+                          builder: (context, snapshot){
+                                      
+                            if(snapshot.hasData){
+                                      
+                              List<ProdModel>? data = snapshot.data;
+                                      
+                              return DataTable(
+                                          
+                                horizontalMargin: 14,
+                                          
+                                columns: const [
+                                  DataColumn(label: Text('Produto')),
+                                  DataColumn(label: Text('Preço')),
+                                  DataColumn(label: Text('Quant.')),
+                                  DataColumn(label: Text('Medida')),
+                                ],
+                                      
+                                rows: data!
+                                .map(
+                                  (produto) => DataRow(
+                                    cells: [
+                                      DataCell(
+                                        Text(produto.nomprod!),
+                                      ),
+                                      DataCell(
+                                        Text(produto.vlrprod!.toString()),
+                                      ),
+                                      DataCell(
+                                        Text(produto.qntprod!.toString())
+                                      ),
+                                      DataCell(
+                                        Text(produto.medprod!)
+                                      ),
+                                    ]
+                                  )
+                                )
+                                .toList(),
+                              );
+                                      
+                                      
+                                      
+                            }else if(snapshot.hasError){
+                              return Text(snapshot.error.toString());
+                            }
+                            // return const CircularProgressIndicator();
+                            return const LinearProgressIndicator(
+                              backgroundColor: Colors.white,
+                              color: Color.fromARGB(255, 224, 222, 222),
+                            );
+                            // return const RefreshProgressIndicator();
+                          },
+                        ),
+                          
+                        ),
+                      ),
+                    ),
+            
+                    //Bottom
+                    Container(
+                    height: 40,
+                    ),
+            
+                  ],
                 ),
               ),
             ),
@@ -296,6 +278,21 @@ class _ProdutosPage extends State<ProdutosPage>{
         ),
       ),  
     );
-
   }
+
+  //Mover para um controller do produto 
+  Future<List<ProdModel>> pegarProdutos() async {
+    var url = Uri.parse("http://192.168.180.199:8080/api/v1/publica/prod"); //corrigir endereço para o ipv4 da maquina host
+    var response = await http.get(url);
+
+    if(response.statusCode == 200){
+
+      List listaProdutos = jsonDecode(response.body);
+      return listaProdutos.map((json) => ProdModel.fromJson(json)).toList();
+
+    }else{
+      throw Exception("Erro não foi possivel carregar os parceiros");
+    }
+  }
+
 }

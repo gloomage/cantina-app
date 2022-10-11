@@ -1,4 +1,5 @@
 import 'package:cantina_app/src/pages/base/base_screen.dart';
+import 'package:cantina_app/src/routes/routes_app.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       home: const BaseScreen(),
-    
+      getPages: AppPages.pages,
     );
   }
 }
