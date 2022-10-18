@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:cantina_app/src/models/prod_model.dart';
+import 'package:cantina_app/src/repositories/prod_repository.dart';
 import 'package:cantina_app/src/routes/routes_app.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -14,13 +15,13 @@ class ProdutosPage extends StatefulWidget{
 }
 
 class _ProdutosPage extends State<ProdutosPage>{
-
+  final ProdRepository prodRepository = ProdRepository();
   late Future<List<ProdModel>> produtos;
 
   @override
   void initState(){
     super.initState();
-    produtos = pegarProdutos();
+    produtos = prodRepository.getAll();
   }
 
   @override
@@ -280,9 +281,9 @@ class _ProdutosPage extends State<ProdutosPage>{
     );
   }
 
-  //Mover para um controller do produto 
+  // //Mover para um controller do produto 
   Future<List<ProdModel>> pegarProdutos() async {
-    var url = Uri.parse("http://192.168.180.199:8080/api/v1/publica/prod"); //corrigir endereço para o ipv4 da maquina host
+    var url = Uri.parse("http://192.168.1.141:8080/api/v1/publica/prod"); //corrigir endereço para o ipv4 da maquina host
     var response = await http.get(url);
 
     if(response.statusCode == 200){

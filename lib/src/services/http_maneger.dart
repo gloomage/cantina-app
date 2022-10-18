@@ -9,41 +9,24 @@ abstract class HttpMethods {
 }
 
 class HttpManager {
-  Future<Map> restRequest({
-    required String url,
-    required String method,
-    Map? headers,
-    Map? body,
-  }) async {
-    // Headers da requisição
-    final defaultHeaders = headers?.cast<String, String>() ?? {}
-      ..addAll({
-        'content-type': 'application/json',
-        'accept': 'application/json',
-        'X-Parse-Application-Id': 'g1Oui3JqxnY4S1ykpQWHwEKGOe0dRYCPvPF4iykc',
-        'X-Parse-REST-API-Key': 'rFBKU8tk0m5ZlKES2CGieOaoYz6TgKxVMv8jRIsN',
-      });
 
+  Future<Response<dynamic>> restRequest({ required String url, required String method, Map? body }) async {
+ 
     Dio dio = Dio();
 
     try {
       Response response = await dio.request(
         url,
         options: Options(
-          headers: defaultHeaders,
           method: method,
         ),
         data: body,
       );
 
-      // Retorno do resultado do backend
-      return response.data;
-    } on DioError catch (error) {
-      // Retorno do erro do dio request
-      return error.response?.data ?? {};
-    } catch (error) {
-      // Retorno de map vazio para error generalizado
-      return {};
+      return response;
+
+    } catch(e) {
+      return Future.error("Error! Retorno vazio");
     }
   }
 }
